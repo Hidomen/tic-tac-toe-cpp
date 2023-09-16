@@ -1,7 +1,6 @@
 #include <iostream>
 
-using namespace std;
-string board[][3] ={{"#", "#", "#"},               // [dikey][yatay]
+std::string board[][3] ={{"#", "#", "#"},               // [dikey][yatay]
                     {"#", "#", "#"},
                     {"#", "#", "#"}};
 
@@ -29,16 +28,16 @@ void resetGame(){
 }
 void againGame(){
     char again;
-    cout << "Again? y/n " << endl;
-    cin >> again;
+    std::cout << "Again? y/n \n";
+    std::cin >> again;
         if ( again == 'y' || again == 'Y'){
             resetGame();
         } else if ( again == 'n' || again == 'N' ){
             turn = 'E';
-            cout << "# X's Score: " << scorex << endl;
-            cout << "# O's Score: " << scoreo << endl;
+            std::cout << "# X's Score: " << scorex << '\n';
+            std::cout << "# O's Score: " << scoreo << '\n';
         } else {
-            cout << "Invalid option" << endl;
+            std::cout << "Invalid option" << '\n';
             againGame();
         }
 }
@@ -46,8 +45,8 @@ void boardShow(){
     int size = 3;
     char line;
     // COLUMN
-    cout << "# | 1 | 2 | 3 |" << endl;
-    cout << "--|---|---|---|" << endl;
+    std::cout << "# | 1 | 2 | 3 |\n";
+    std::cout << "--|---|---|---|\n";
     for (int i = 0; i < size; i++){
         // ROW
         switch (i){
@@ -61,24 +60,24 @@ void boardShow(){
             line = 'C';
                 break;     
         }
-        cout << line << " | ";
+        std::cout << line << " | ";
         for(int j = 0; j < size; j++){
 
-        cout << board[i][j] << " | ";
+        std::cout << board[i][j] << " | ";
         }
-        cout << endl << "--|---|---|---|" << endl;
+        std::cout << "\n--|---|---|---|\n";
 }
 }
 void gameOver(){
     if (turn == 'X'){
         scorex++;
         boardShow();
-        cout << "X WON" << endl;
+        std::cout << "X WON\n";
         againGame();
     } else if ( turn == 'O'){
         scoreo++;
         boardShow();
-        cout << "O WON" << endl;
+        std::cout << "O WON\n";
         againGame();
     }
 }
@@ -103,7 +102,7 @@ void checkGame(){
             && board[1][0] != "#" && board[1][1] != "#" && board[1][2] != "#" 
             && board[2][0] != "#" && board[2][1] != "#" && board[2][2] != "#" ) {
                 boardShow();
-                cout << "IT'S DRAW" << endl;
+                std::cout << "IT'S DRAW\n";
                 againGame();
 
     } else {
@@ -113,83 +112,83 @@ void checkGame(){
 void invalidMove(){
     checkGame();
 }
-void movePlay(string move){
+void movePlay(std::string move){
     if (move == "A1"){
             if ( board[0][0] == "#"){
                 board[0][0] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "A2"){
             if ( board[0][1] == "#"){
                 board[0][1] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "A3"){
             if ( board[0][2] == "#"){
                 board[0][2] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "B1"){
             if ( board[1][0] == "#"){
                 board[1][0] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "B2"){
             if ( board[1][1] == "#"){
                 board[1][1] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "B3"){
             if ( board[1][2] == "#"){
                 board[1][2] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "C1"){
             if ( board[2][0] == "#"){
                 board[2][0] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "C2"){
             if ( board[2][1] == "#"){
                 board[2][1] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else if (move == "C3"){
             if ( board[2][2] == "#"){
                 board[2][2] = turn;
             } else {
-                cout << "Already Taken" << endl;
+                std::cout << "Already Taken\n";
                 invalidMove();
             }
     } else {
-            cout << "Invalid Move!" << endl;
+            std::cout << "Invalid Move!\n";
             invalidMove();
     }
     }
 
 int main(){
 
-    string move;
+    std::string move;
     do{
         boardShow();
-    cout << turn <<"'s Turn" << endl;
-    cin >> move;
+    std::cout << turn <<"'s Turn\n";
+    std::cin >> move;
 
     movePlay(move);
     checkGame();
