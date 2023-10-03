@@ -113,72 +113,29 @@ void invalidMove(){
     checkGame();
 }
 void movePlay(std::string move){
-    if (move == "A1"){
-            if ( board[0][0] == "#"){
-                board[0][0] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "A2"){
-            if ( board[0][1] == "#"){
-                board[0][1] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "A3"){
-            if ( board[0][2] == "#"){
-                board[0][2] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "B1"){
-            if ( board[1][0] == "#"){
-                board[1][0] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "B2"){
-            if ( board[1][1] == "#"){
-                board[1][1] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "B3"){
-            if ( board[1][2] == "#"){
-                board[1][2] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "C1"){
-            if ( board[2][0] == "#"){
-                board[2][0] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "C2"){
-            if ( board[2][1] == "#"){
-                board[2][1] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
-    } else if (move == "C3"){
-            if ( board[2][2] == "#"){
-                board[2][2] = turn;
-            } else {
-                std::cout << "Already Taken\n";
-                invalidMove();
-            }
+
+    int row, column;
+    if (move[0] == 'A') {
+        row = 0;
+    } else if (move[0] == 'B'){
+        row = 1;
+    } else if (move[0] == 'C'){
+        row = 2;
+    }
+
+    if (move[1] == '1'){
+        column = 0;
+    } else if (move[1] == '2'){
+        column = 1;
+    } else if (move[1] == '3'){
+        column = 2;
+    }
+
+    if ( board[row][column] == "#"){
+        board[row][column] = turn;
     } else {
-            std::cout << "Invalid Move!\n";
-            invalidMove();
+        std::cout << "Already Taken\n";
+        invalidMove();
     }
     }
 
