@@ -81,7 +81,7 @@ void gameOver(){
         againGame();
     }
 }
-void checkGame(){
+void checkWin(){
     if ( board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != "#" ){
         gameOver(); 
     } else if ( board[1][0] == board[1][1] && board[1][0] == board[1][2] && board[1][0] != "#" ){
@@ -110,7 +110,7 @@ void checkGame(){
     }
 }
 void invalidMove(){
-    checkGame();
+    checkWin();
 }
 void movePlay(std::string move){
 
@@ -133,14 +133,16 @@ void movePlay(std::string move){
 
     if ( board[row][column] == "#"){
         board[row][column] = turn;
-    } else {
+    } else if (board[row][column] == "X" || board[row][column] == "O") {
         std::cout << "Already Taken\n";
+        invalidMove();
+    } else {
+        std::cout << "Invalid Move\n";
         invalidMove();
     }
     }
 
 int main(){
-
     std::string move;
     do{
         boardShow();
@@ -148,7 +150,7 @@ int main(){
     std::cin >> move;
 
     movePlay(move);
-    checkGame();
+    checkWin();
 
     } while (turn != 'E');
 
